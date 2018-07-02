@@ -1,0 +1,7 @@
+{
+    "name": "asmundstavdahl/rapido",
+    "description": "Simple PHP web app library",
+    "type": "library",
+    "license": "Apache-2.0",
+    "require": {}
+}

@@ -1,2 +1,2 @@
 # phprang-rapido
-Den konstruktør sjenial.
+Simple PHP web app library.
