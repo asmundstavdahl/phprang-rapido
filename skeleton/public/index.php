@@ -9,11 +9,15 @@ require "../src/autoload.php";
 
 use \Rapd\Router;
 use \Rapd\View;
+use \Rapd\Environment;
 
 View::setRenderer(function(string $template, array $data = []){
 	require_once "../src/template-preparations.php";
+	extract(Environment::getAll());
 	extract($data);
+	include "../templates/header.php";
 	include "../templates/{$template}.php";
+	include "../templates/footer.php";
 });
 
 Router::setBaseURL("/");

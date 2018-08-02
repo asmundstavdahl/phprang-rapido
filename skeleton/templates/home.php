@@ -3,6 +3,11 @@
 	Try one of these:
 	<ul>
 		<li>
+			<a href="<?= route("just_hello") ?>">
+				Just hello.
+			</a>
+		</li>
+		<li>
 			<a href="<?= route("hello_world") ?>">
 				Hello world!
 			</a>
