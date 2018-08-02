@@ -16,9 +16,7 @@ View::setRenderer(function(string $template, array $data = []){
 	require_once "../src/template-preparations.php";
 	extract(Environment::getAll());
 	extract($data);
-	include "../templates/header.php";
 	include "../templates/{$template}.php";
-	include "../templates/footer.php";
 });
 
 # The router's application base path defaults to "/".
