@@ -2,6 +2,8 @@
 
 namespace Rapd\Router;
 
+use \Rapd\Router;
+
 class Route {
 	use \Rapd\Prototype;
 
@@ -21,7 +23,7 @@ class Route {
 
 	public function match(){
 		if($_SERVER["REQUEST_METHOD"] == $this->method){
-			$uri = $_SERVER["REQUEST_URI"];
+			$uri = str_replace(Router::getApplicationBasePath(), "", $_SERVER["REQUEST_URI"]);
 			$regex = "`^{$this->pattern}$`";
 			$matches = [];
 			if(preg_match($regex, $uri, $matches)){
@@ -47,7 +49,7 @@ class Route {
 		foreach($data as $key => $value){
 			$path = preg_replace("/\([^)]*\)/", $value, $path, 1);
 		}
-		return str_replace("//", "/", "{$this->baseURL}{$path}");
+		return Router::getApplicationBasePath().str_replace("//", "/", "{$this->baseURL}{$path}");
 	}
 
 	public static function to(string $name, array $data = []){

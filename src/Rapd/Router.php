@@ -2,14 +2,19 @@
 
 namespace Rapd;
 
+use \Rapd\Environment;
+
 class Router {
 	use Prototype;
 
-	private static $baseURL = "/";
+	private static $applicationBasePath = "/";
 	private static $routes = [];
 
-	public static function setBaseURL(string $baseURL){
-		self::$baseURL = $baseURL;
+	public static function setApplicationBasePath(string $applicationBasePath){
+		self::$applicationBasePath = $applicationBasePath;
+	}
+	public static function getApplicationBasePath() : string {
+		return self::$applicationBasePath;
 	}
 
 	public static function findRouteByName(string $name) {
@@ -56,7 +61,7 @@ class Router {
 			$method,
 			$callback
 		);
-		$route->baseURL = self::$baseURL;
+		$route->applicationBasePath = self::$applicationBasePath;
 		self::$routes[$name] = $route;
 	}
 
