@@ -1,2 +1,2 @@
-# phprang-rapido
-Simple PHP web app library.
+# Rapd
+Super KISS PHP web app library.
