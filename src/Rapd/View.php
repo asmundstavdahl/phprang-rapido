@@ -12,7 +12,7 @@ class View {
 	}
 
 	public static function render(string $name, array $data = []){
-		call_user_func_array(self::$renderer, [$name, $data]);
+		return call_user_func_array(self::$renderer, [$name, $data]);
 	}
 
 	public static function echo(string $template, array $data){
