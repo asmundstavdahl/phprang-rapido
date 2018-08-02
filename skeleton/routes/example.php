@@ -1,11 +1,11 @@
 <?php
 
 use \Rapd\Router;
+use \Rapd\View;
 
-Router::get("hello", "/hello", function(){
-	return View::render("hello", ["world"]);
+#     route name, regex, callback
+Router::get("home", "/", function(){
+	return View::render("home");
 });
-# \WordController::show()
-Router::get("word_show", "/word/(\w+)");
-# \WordController::showLetter()
-Router::get("show_letter_in_word", "/word/(\w+)/(\w)", [WordController::class, "showLetter"]);
+Router::get("hello_world", "/world", [\HelloController::class, "world"]);
+Router::get("hello_something", "/(\w+)", [\HelloController::class, "something"]);

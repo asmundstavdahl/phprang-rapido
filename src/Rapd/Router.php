@@ -49,10 +49,7 @@ class Router {
 		self::registerRoute("POST", $name, $pattern, $callback);
 	}
 
-	public static function registerRoute(string $method, string $name, string $pattern, $callback = null){
-		if($callback === null){
-			$callback = self::implyCallback($name, $pattern);
-		}
+	public static function registerRoute(string $method, string $name, string $pattern, $callback){
 		$route = new Router\Route(
 			$name,
 			$pattern,
@@ -66,6 +63,7 @@ class Router {
 	public static function run(){
 		foreach(self::sortRoutes(self::$routes) as $route){
 			if($route->match()){
+				error_log("Route: {$route->name}");
 				return $route->execute();
 			}
 		}
@@ -75,19 +73,6 @@ class Router {
 
 	public static function getAllRoutes() : array {
 		return self::$routes;
-	}
-
-	private static function implyCallback($name){
-		switch(substr_count($name, "_")){
-			case 0:
-				return self::implyCallback("{$name}_{$name}");
-			case 1:
-				$parts = explode("_", $name);
-				$method = array_pop($parts);
-				$namespace = "\\".join("\\", $parts)."Controller";
-				$namespace = ucwords($namespace, "\\");
-				return [$namespace, $method];
-		}
 	}
 
 	private static function sortRoutes(array $routes){

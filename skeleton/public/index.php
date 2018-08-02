@@ -19,6 +19,11 @@ View::setRenderer(function(string $template, array $data = []){
 Router::setBaseURL("/");
 Router::loadDirectory("../routes");
 
-$output = Router::run();
+$result = Router::run();
 
-echo $output;
+if($result === false){
+	header('HTTP/1.1 404 Not Found');
+	echo View::render("404");
+} else {
+	echo $result;
+}
