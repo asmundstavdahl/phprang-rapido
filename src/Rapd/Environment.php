@@ -7,7 +7,7 @@ class Environment {
 
 	private static $props = [];
 
-	public static function supply(string $name, $what){
+	public static function set(string $name, $what){
 		self::$props[$name] = $what;
 	}
 
@@ -15,7 +15,7 @@ class Environment {
 		return self::$props[$name];
 	}
 
-	public static function everything(){
+	public static function getAll(){
 		return self::$props;
 	}
 }
