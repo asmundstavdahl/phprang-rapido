@@ -21,7 +21,7 @@ View::setRenderer(function(string $template, array $data = []){
 
 # The router's application base path defaults to "/".
 #Router::setApplicationBasePath("/myproject");
-Router::setApplicationBasePath(str_replace($_SERVER["DOCUMENT_ROOT"], "", __DIR__));
+#Router::setApplicationBasePath(str_replace($_SERVER["DOCUMENT_ROOT"], "", __DIR__));
 # Include PHP files from the directory
 Router::loadDirectory("../routes");
 
