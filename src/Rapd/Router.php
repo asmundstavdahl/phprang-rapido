@@ -80,6 +80,11 @@ class Router {
 		return self::$routes;
 	}
 
+	public static function redirectTo(string $name, array $data = []){
+		header("Location: ".self::routeTo($name, $data));
+		exit;
+	}
+
 	private static function sortRoutes(array $routes){
 		usort($routes, function(Router\Route $a, Router\Route $b){
 			return substr_count($a->pattern, "/") < substr_count($b->pattern, "/");
