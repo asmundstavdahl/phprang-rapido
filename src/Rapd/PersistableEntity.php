@@ -2,7 +2,7 @@
 
 namespace Rapd;
 
-class Entity {
+class BaseEntity {
 	use Prototype;
 
 	private $data = [];

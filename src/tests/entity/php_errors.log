@@ -1,0 +1,81 @@
+[04-Aug-2018 19:57:59 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 16
+[04-Aug-2018 19:58:11 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 16
+[04-Aug-2018 19:58:18 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 16
+[04-Aug-2018 19:58:20 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 16
+[04-Aug-2018 19:58:23 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 16
+[04-Aug-2018 19:58:25 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 16
+[04-Aug-2018 19:58:27 UTC] test
+[04-Aug-2018 19:58:27 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:29 UTC] test
+[04-Aug-2018 19:58:29 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:31 UTC] test
+[04-Aug-2018 19:58:31 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:33 UTC] test
+[04-Aug-2018 19:58:33 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:35 UTC] test
+[04-Aug-2018 19:58:35 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:37 UTC] test
+[04-Aug-2018 19:58:37 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:39 UTC] test
+[04-Aug-2018 19:58:39 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:41 UTC] test
+[04-Aug-2018 19:58:41 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:43 UTC] test
+[04-Aug-2018 19:58:43 UTC] PHP Fatal error:  Class 'BaseEntity' not found in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 10
+[04-Aug-2018 19:58:45 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:58:47 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:58:49 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:58:51 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:58:53 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:58:55 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:58:58 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:00 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:02 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:04 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:06 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:08 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:10 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:12 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:14 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:16 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:18 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:20 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:22 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:25 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:27 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:29 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:31 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:33 UTC] PHP Parse error:  syntax error, unexpected '\' (T_NS_SEPARATOR), expecting '{' in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 19:59:35 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:37 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:39 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:41 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:43 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:45 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:47 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:49 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:51 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:53 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:55 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:57 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 19:59:59 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 20:00:01 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 20:00:03 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 20:00:05 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 20:00:07 UTC] PHP Parse error:  syntax error, unexpected ';', expecting identifier (T_STRING) in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 20
+[04-Aug-2018 20:00:09 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:11 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:13 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:15 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:17 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:19 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:21 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:23 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:26 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:28 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:30 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:32 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:34 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:36 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:37 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
+[04-Aug-2018 20:00:56 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/splitlocked/ws/rapd/src/tests/entity/tests.php on line 18
