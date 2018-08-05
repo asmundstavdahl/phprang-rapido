@@ -27,9 +27,9 @@ class BaseEntity {
 	];
 
 	public function __construct(array $values = []){
-		$this->values = array_map($this->getFields(), function($field){
+		$this->values = array_map(function($field){
 			return self::$typeDefaultValues[$field];
-		});
+		}, $this->getFields());
 		$this->patch($values);
 	}
 
@@ -47,37 +47,39 @@ class BaseEntity {
 
 	public function validateFieldValue($field, $value, $throwOnInvalidValue = true){
 		$validationMethod = "VALIDATE_{$field}";
-		$isValid = false;
 
-		switch($this->getFields()[$field]){
-			case integer::class:
-				$isValid = is_numeric($value) && intval($value) == floatval($value);
-				break;
-			case string::class:
-				$isValid = is_string($value);
-				break;
-			case float::class:
-				$isValid = is_numeric($value);
-				break;
-			default:
-				$isValid = true;
-		}
+		$isValid = self::validateBuiltinType($this->getFields()[$field], $value);
 
 		# If the basic type validators above approves the value,
 		# also ask the field-specific validator if it exists.
-		if($isValid && array_key_exists($validationMethod, get_class_methods(get_called_class()))){
+		if($isValid && false !== array_search($validationMethod, get_class_methods(get_called_class()))){
 			$isValid = call_user_func([get_called_class(), $validationMethod], $value);
+		} else {
+			echo "Didn't find {$validationMethod} for ".get_called_class()."\n";
+			echo print_r(get_class_methods(get_called_class()), true);
 		}
 
 		if($throwOnInvalidValue && !$isValid){
-			throw new Exception("Field validation failed for {$field}");
+			throw new \Exception("Field validation failed for {$field}");
 		}
 
 		return $isValid;
 	}
 
+	public static function validateBuiltinType(string $type, $value) : bool {
+		switch($type){
+			case integer::class:
+				return is_numeric($value) && intval($value) == floatval($value);
+			case string::class:
+				return is_string($value);
+			case float::class:
+				return is_numeric($value);
+		}
+		return true;
+	}
+
 	public function __set($key, $value){
-		if($this->validateFieldValue($key, $values)){
+		if($this->validateFieldValue($key, $value)){
 			$this->values[$key] = $value;
 		}
 	}
@@ -99,5 +101,9 @@ class BaseEntity {
 		$table = preg_replace("/([a-z0-9])([A-Z0-9])/", '$1_$2', $table);
 		$table = strtolower($table);
 		return $table;
+	}
+
+	public static function getFields() : array {
+		return self::$fields;
 	}
 }
