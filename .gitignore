@@ -1,1 +1,4 @@
 /vendor/
+
+php_errors.log
+**/php_errors.log
