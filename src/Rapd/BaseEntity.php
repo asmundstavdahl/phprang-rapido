@@ -59,8 +59,7 @@ class BaseEntity {
 		if($isValid && $validationMethodExists){
 			$isValid = call_user_func([get_called_class(), $validationMethod], $value);
 		} else {
-			echo "Didn't find {$validationMethod} for ".get_called_class()."\n";
-			echo print_r(get_class_methods(get_called_class()), true);
+			#echo "Didn't find {$validationMethod} for ".get_called_class()."\n";
 		}
 
 		if($throwOnInvalidValue && !$isValid){
