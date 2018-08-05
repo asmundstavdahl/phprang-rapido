@@ -54,7 +54,7 @@ foreach($itIt as $node){
 		try {
 			include $node;
 		} catch(Exception $e){
-			echo "\tEXC: {$e}\n";
+			echo "\t- {$e}\n";
 		} finally {
 			echo "} # {$name}\n";
 		}
