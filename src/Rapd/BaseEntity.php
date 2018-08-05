@@ -90,14 +90,13 @@ class BaseEntity {
 	 * If not overridden this method will imply a table name.
 	 * Examples (entity class => table name):
 	 *     TodoTask => todo_task
-	 *     PersonEntity => person
 	 *     App\Namespace\City => city
+	 * @see  tests/entity_tests.php
 	 */
 	public static function getTable() : string {
 		$namespacedClassParts = explode("\\", get_called_class());
 		$table = array_pop($namespacedClassParts);
-		$table = str_replace("Entity", "", $table);
-		$table = preg_replace("/([a-z0-9])([A-Z])/", '$1_$2', $table);
+		$table = preg_replace("/([a-z0-9])([A-Z0-9])/", '$1_$2', $table);
 		$table = strtolower($table);
 		return $table;
 	}
