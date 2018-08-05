@@ -33,7 +33,9 @@ if(count($categories) == 0){
 $directoryIterator = new RecursiveDirectoryIterator($testDir);
 $itIt = new RecursiveIteratorIterator($directoryIterator);
 foreach($itIt as $node){
-	if(is_file($node) && preg_match('/tests?\.php$/', $node)){
+	# Test files must not start with an underscore;
+	# use a prefixing underscore for supporting PHP files.
+	if(is_file($node) && preg_match('/\/[^_][^\/]+\.php$/', $node)){
 		$name = str_replace($testDir, "", $node);
 
 		if(count($categories) > 0){

@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__."/testNamespace.php";
+require __DIR__."/_namespacedEntity.php";
 
 use \Rapd\BaseEntity;
 
