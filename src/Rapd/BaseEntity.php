@@ -17,20 +17,23 @@ class BaseEntity {
 	 * @var array
 	 */
 	protected static $fields = [
-		"id" => integer::class
-	];
-
-	private static $typeDefaultValues = [
-		integer::class => 0,
-		string::class => "",
-		float::class => 0.0,
+		"id" => \integer::class
 	];
 
 	public function __construct(array $values = []){
-		$this->values = array_map(function($field){
-			return self::$typeDefaultValues[$field];
+		$this->values = array_map(function($fieldType){
+			return get_called_class()::getDefaultValueForType($fieldType);
 		}, $this->getFields());
 		$this->patch($values);
+	}
+
+	protected static function getDefaultValueForType(string $type){
+		switch($type){
+			case \integer::class: return  0;
+			case \string::class: return  "";
+			case \float::class: return  0.0;
+		}
+		return null;
 	}
 
 	public function patch(array $values){
@@ -47,12 +50,13 @@ class BaseEntity {
 
 	public function validateFieldValue($field, $value, $throwOnInvalidValue = true){
 		$validationMethod = "VALIDATE_{$field}";
+		$validationMethodExists = false !== array_search($validationMethod, get_class_methods(get_called_class()));
 
-		$isValid = self::validateBuiltinType($this->getFields()[$field], $value);
+		$isValid = $this->validateBuiltinType($this->getFields()[$field], $value);
 
 		# If the basic type validators above approves the value,
 		# also ask the field-specific validator if it exists.
-		if($isValid && false !== array_search($validationMethod, get_class_methods(get_called_class()))){
+		if($isValid && $validationMethodExists){
 			$isValid = call_user_func([get_called_class(), $validationMethod], $value);
 		} else {
 			echo "Didn't find {$validationMethod} for ".get_called_class()."\n";
@@ -68,11 +72,11 @@ class BaseEntity {
 
 	public static function validateBuiltinType(string $type, $value) : bool {
 		switch($type){
-			case integer::class:
-				return is_numeric($value) && intval($value) == floatval($value);
-			case string::class:
+			case \integer::class:
+				return is_numeric($value) && ceil($value) == floor($value);
+			case \string::class:
 				return is_string($value);
-			case float::class:
+			case \float::class:
 				return is_numeric($value);
 		}
 		return true;
@@ -88,22 +92,7 @@ class BaseEntity {
 		return $this->values[$key];
 	}
 
-	/**
-	 * If not overridden this method will imply a table name.
-	 * Examples (entity class => table name):
-	 *     TodoTask => todo_task
-	 *     App\Namespace\City => city
-	 * @see  tests/entity_tests.php
-	 */
-	public static function getTable() : string {
-		$namespacedClassParts = explode("\\", get_called_class());
-		$table = array_pop($namespacedClassParts);
-		$table = preg_replace("/([a-z0-9])([A-Z0-9])/", '$1_$2', $table);
-		$table = strtolower($table);
-		return $table;
-	}
-
 	public static function getFields() : array {
-		return self::$fields;
+		return get_called_class()::$fields;
 	}
 }

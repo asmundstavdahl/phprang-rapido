@@ -2,6 +2,6 @@
 
 namespace Test;
 
-use \Rapd\BaseEntity;
+use \Rapd\PersistableEntity;
 
-class ThreeEntity extends BaseEntity {}
+class ThreeEntity extends PersistableEntity {}
