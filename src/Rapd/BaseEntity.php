@@ -65,7 +65,7 @@ class BaseEntity {
 
 		# If the basic type validators above approves the value,
 		# also ask the field-specific validator if it exists.
-		if($isValid && array_key_exists($validationMethod, get_class_methods(get_called_class())){
+		if($isValid && array_key_exists($validationMethod, get_class_methods(get_called_class()))){
 			$isValid = call_user_func([get_called_class(), $validationMethod], $value);
 		}
 
