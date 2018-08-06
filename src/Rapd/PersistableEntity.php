@@ -23,22 +23,22 @@ class PersistableEntity extends BaseEntity {
 	}
 
 	public function insert(){
-		Database::insert($this);
+		return Database::insert($this);
 	}
-	
+
 	public function update(){
-		Database::update($this);
+		return Database::update($this);
 	}
-	
+
 	public function delete(){
-		Database::update($this);
+		return Database::update($this);
 	}
-	
+
 	public function findById(int $id){
-		Database::findById(get_called_class(), $id);
+		return Database::findById(get_called_class(), $id);
 	}
-	
+
 	public function findAll(){
-		Database::findAll(get_called_class());
+		return Database::findAll(get_called_class());
 	}
 }
