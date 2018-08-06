@@ -7,28 +7,49 @@ class Database {
 
 	public static $pdo = null;
 
-	public static function getAll(string $entityClass){
+	public static function findAll(string $entityClass) : array {
 		self::assertInitialized();
 
 		$table = $entityClass::getTable();
 
 		$sql = "SELECT * FROM `{$table}`";
 		$stmt = self::$pdo->prepare($sql);
-		$stmt->setFetchMode(\PDO::FETCH_CLASS, $entityClass);
 		$stmt->execute();
-		return $stmt->fetchAll();
+
+		$rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		$entities = [];
+		foreach($rows as $values){
+			$entity = new $entityClass();
+			foreach($values as $field => $value){
+				$entity->{$field} = $value;
+			}
+			$entities[] = $entity;
+		}
+
+		return $entities;
 	}
 
-	public static function getById(string $entityClass, int $id){
+	public static function findById(string $entityClass, int $id) {
 		self::assertInitialized();
 
 		$table = $entityClass::getTable();
 
 		$sql = "SELECT * FROM `{$table}` WHERE id = :id";
 		$stmt = self::$pdo->prepare($sql);
-		$stmt->setFetchMode(\PDO::FETCH_CLASS, $entityClass);
 		$stmt->execute([":id" => $id]);
-		return $stmt->fetch();
+
+		$values = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+		if(!is_array($values)){
+			return null;
+		}
+
+		$entity = new $entityClass();
+		foreach($values as $field => $value){
+			$entity->{$field} = $value;
+		}
+
+		return $entity;
 	}
 
 	public static function save(object $entity){
@@ -48,7 +69,7 @@ class Database {
 			throw new Exception("Entity already has an ID");
 		}
 
-		$columns = $entity->getColumns();
+		$columns = array_keys($entity->getFields());
 		$columns = array_filter($columns, function($column){
 			return $column != "id";
 		});
@@ -73,7 +94,10 @@ class Database {
 
 		$stmt = self::$pdo->prepare($sql);
 		$stmt->execute($valueBinds);
-		return $stmt->fetchAll(\PDO::FETCH_CLASS, get_class($entity));
+
+		$id = self::$pdo->lastInsertId();
+		$entity->id = $id;
+		return $id;
 	}
 
 	public static function update(object $entity){
@@ -82,10 +106,10 @@ class Database {
 		$table = $entity->getTable();
 
 		if(!$entity->id){
-			throw new Exception("Need an ID to update the entity");
+			throw new \Exception("Need an ID to update the entity");
 		}
 
-		$columns = $entity->getColumns();
+		$columns = array_keys($entity->getFields());
 
 		$columnAssignmentArray = [];
 		foreach($columns as $column){
@@ -122,14 +146,7 @@ class Database {
 		return $stmt->execute([":id" => $entity->id]);
 	}
 
-	private function implyTable(string $entityClass){
-		$table = array_pop(explode("\\", $entityClass));
-		$table = preg_replace("/([a-z0-9])([A-Z])/", '$1_$2', $table);
-		$table = strtolower($table);
-		return $table;
-	}
-
-	private function assertInitialized(){
+	public function assertInitialized(){
 		if(self::$pdo === null){
 			$dbFile = "{$_SERVER["DOCUMENT_ROOT"]}/../default.sqlite3";
 			error_log("Database defaulting to sqlite at {$dbFile}");
