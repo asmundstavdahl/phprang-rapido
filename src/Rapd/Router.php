@@ -3,12 +3,13 @@
 namespace Rapd;
 
 use \Rapd\Environment;
+use \Rapd\Router\Route;
 
 class Router {
 	use Prototype;
 
 	private static $applicationBasePath = "/";
-	private static $routes = [];
+	protected static $routes = [];
 
 	public static function setApplicationBasePath(string $applicationBasePath){
 		self::$applicationBasePath = $applicationBasePath;
@@ -53,23 +54,45 @@ class Router {
 	public static function post(string $name, string $pattern, $callback = null){
 		self::registerRoute("POST", $name, $pattern, $callback);
 	}
+	
+	public static function put(string $name, string $pattern, $callback = null){
+		self::registerRoute("PUT", $name, $pattern, $callback);
+	}
+
+	public static function delete(string $name, string $pattern, $callback = null){
+		self::registerRoute("DELETE", $name, $pattern, $callback);
+	}
 
 	public static function registerRoute(string $method, string $name, string $pattern, $callback){
-		$route = new Router\Route(
+		$route = new Route(
 			$name,
 			$pattern,
 			$method,
 			$callback
 		);
-		$route->applicationBasePath = self::$applicationBasePath;
-		self::$routes[$name] = $route;
+		self::addRoute($route);
+	}
+	public static function addRoute(Route $route){
+		self::$routes[$route->name] = $route;
 	}
 
-	public static function run(){
+	public static function run($method = null, $uri = null){
+		$method = $method !== null ?$method :$_SERVER["REQUEST_METHOD"];
+		$uri = $uri !== null ?$uri :$_SERVER["REQUEST_URI"];
+
+		$matchingRoute = self::findMatchingRoute($method, $uri);
+
+		if($matchingRoute){
+			return $matchingRoute->execute();
+		}
+		return false;
+	}
+
+	public static function findMatchingRoute(string $method, string $uri){
 		foreach(self::sortRoutes(self::$routes) as $route){
-			if($route->match()){
-				error_log("Route: {$route->name}");
-				return $route->execute();
+			$uri = $uri; # $_SERVER["REQUEST_URI"]
+			if($route->match($method, $uri)){ # $_SERVER["REQUEST_METHOD"]
+				return $route;
 			}
 		}
 
@@ -86,9 +109,14 @@ class Router {
 	}
 
 	private static function sortRoutes(array $routes){
-		usort($routes, function(Router\Route $a, Router\Route $b){
+		usort($routes, function(Route $a, Route $b){
 			return substr_count($a->pattern, "/") < substr_count($b->pattern, "/");
 		});
 		return $routes;
+	}
+
+	public static function reset(){
+		self::$applicationBasePath = "/";
+		self::$routes = [];
 	}
 }

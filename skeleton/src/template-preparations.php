@@ -3,7 +3,7 @@
 use \Rapd\Router\Route;
 use \Rapd\View;
 
-function route(string $name, array $data =  []){
+function route(string $name, array $data = []){
 	return Router::makeUrlTo($name, $data);
 }
 

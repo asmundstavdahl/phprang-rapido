@@ -10,9 +10,10 @@ class Route {
 	public $name = "";
 	public $pattern = "#";
 	public $method = "GET";
-	public $callback = [Route::class, "youDeserveThisError"];
+	public $callback = [Your::class, "yourMethodHere"];
+
+	# Will be populated by ->match()
 	public $patternMatches = [];
-	public $baseURL = "/";
 
 	function __construct(string $name, string $pattern, string $method, $callback){
 		$this->name = $name;
@@ -21,12 +22,8 @@ class Route {
 		$this->callback = $callback;
 	}
 
-	public function match(){
-		if($_SERVER["REQUEST_METHOD"] == $this->method){
-			$uri = str_replace(Router::getApplicationBasePath(), "", $_SERVER["REQUEST_URI"]);
-			# It's important to keep the first slash here
-			$uri = str_replace("//", "/", "/{$uri}");
-
+	public function match(string $method, string $uri){
+		if($method == $this->method){
 			$regex = "`^{$this->pattern}$`";
 			$matches = [];
 			if(preg_match($regex, $uri, $matches)){
@@ -34,6 +31,7 @@ class Route {
 				return true;
 			}
 		}
+		$this->patternMatches = [];
 		return false;
 	}
 
@@ -44,6 +42,8 @@ class Route {
 				$this->callback,
 				$this->patternMatches
 			);
+		} else {
+			throw new Exception("Match the route to a URI first");
 		}
 	}
 
@@ -52,6 +52,6 @@ class Route {
 		foreach($data as $key => $value){
 			$path = preg_replace("/\([^)]*\)/", $value, $path, 1);
 		}
-		return Router::getApplicationBasePath().str_replace("//", "/", "{$this->baseURL}{$path}");
+		return $path;
 	}
 }
