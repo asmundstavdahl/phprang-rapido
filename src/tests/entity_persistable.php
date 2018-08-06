@@ -14,6 +14,7 @@ assert(TestEntity1::getTable() == "test_entity_1");
 assert(TestNumberTwo::getTable() == "test_number_two");
 assert(Test\ThreeEntity::getTable() == "three_entity");
 
+# Database setup
 Database::$pdo = new PDO("sqlite:".__DIR__."/test.sqlite3");
 Database::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 try {
@@ -27,6 +28,7 @@ try {
 	');
 }
 
+# Test entity
 class Bar extends PersistableEntity {
 	static $fields = [
 		"id" => integer::class,

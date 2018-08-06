@@ -8,8 +8,8 @@ if(file_exists(__DIR__."/vendor/autoload.php")){
 
 # Make sure php.ini doesn't disable assert()
 ini_set("zend.assertions", 1);
-# Don't throw exceptions; print warnings instead
-ini_set("assert.exception", 0);
+# 1 => throw exceptions and die, 0 => print warnings
+ini_set("assert.exception", 1);
 # Show errors (and warnings) in output
 ini_set("display_errors", 1);
 
