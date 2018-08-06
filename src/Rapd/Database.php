@@ -39,6 +39,11 @@ class Database {
 		$stmt->execute([":id" => $id]);
 
 		$values = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+		if(!is_array($values)){
+			return null;
+		}
+
 		$entity = new $entityClass();
 		foreach($values as $field => $value){
 			$entity->{$field} = $value;

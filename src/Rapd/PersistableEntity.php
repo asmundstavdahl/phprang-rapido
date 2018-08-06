@@ -31,7 +31,7 @@ class PersistableEntity extends BaseEntity {
 	}
 
 	public function delete(){
-		return Database::update($this);
+		return Database::delete($this);
 	}
 
 	public function findById(int $id){

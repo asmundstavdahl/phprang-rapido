@@ -38,22 +38,43 @@ class Bar extends PersistableEntity {
 	}
 }
 
-$bar = new Bar(["name" => "Bar A"]);
-$bar->insert();
+# Validation works
+$ex = null;
+try {
+	new Bar(["name" => ""]);
+} catch(Exception $e){
+	$ex = $e;
+}
+assert($ex !== null);
 
-$bar2 = Bar::findById(1);
-assert(get_class($bar2) == Bar::class);
-assert($bar2->name == $bar->name);
+$ex = null;
+try {
+	new Bar(["name" => "a"]);
+} catch(Exception $e){
+	$ex = $e;
+}
+assert($ex === null);
 
-$bar2->name = "Bar B";
-$bar2->update();
+# Insert returns new ID
+$bar0 = new Bar(["name" => "Bar0"]);
+$id = $bar0->insert();
+assert($bar0->id > 0);
+assert($id == $bar0->id);
+$bar0->delete();
+$bars = Bar::findAll();
+assert(count($bars) == 0, "Want 0, have ".count($bars));
 
+# Inserting and finding work together
+$bar1 = new Bar(["name" => "Bar A"]);
+$bar1->insert();
+$bar1_ = Bar::findById($bar1->id);
+assert(get_class($bar1_) == Bar::class);
+assert($bar1_->id == $bar1->id);
+assert($bar1_->name == $bar1->name);
+
+# Updating changes existing row
+$bar1_->name = "Bar B";
+$bar1_->update();
 $bars = Bar::findAll();
 assert(count($bars) == 1);
 assert($bars[0]->name == "Bar B");
-
-# Insert returns new ID
-$bar10 = new Bar(["name" => "Bar10"]);
-$id = $bar10->insert();
-assert($bar10->id > 0);
-assert($id == $bar10->id);
