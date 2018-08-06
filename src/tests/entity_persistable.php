@@ -19,6 +19,8 @@ Database::$pdo = new PDO("sqlite:".__DIR__."/test.sqlite3");
 Database::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 try {
 	Database::$pdo->exec('DROP TABLE bar;');
+} catch(Exception $e){
+	# Everything is gonna be alright.
 } finally {
 	Database::$pdo->exec('
 		CREATE TABLE bar (

@@ -6,6 +6,9 @@ if(file_exists(__DIR__."/vendor/autoload.php")){
 	require __DIR__."/vendor/autoload.php";
 }
 
+# Show all messages, including notices (for deprecations)
+error_reporting(E_ALL);
+
 # Make sure php.ini doesn't disable assert()
 ini_set("zend.assertions", 1);
 # 1 => throw exceptions and die, 0 => print warnings

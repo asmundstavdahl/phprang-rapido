@@ -34,11 +34,11 @@ class PersistableEntity extends BaseEntity {
 		return Database::delete($this);
 	}
 
-	public function findById(int $id){
+	public static function findById(int $id){
 		return Database::findById(get_called_class(), $id);
 	}
 
-	public function findAll(){
+	public static function findAll(){
 		return Database::findAll(get_called_class());
 	}
 }
