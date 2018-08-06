@@ -2,7 +2,7 @@
 
 namespace Rapd;
 
-class PersistableEntity {
+class PersistableEntity extends BaseEntity {
 	use Prototype;
 
 	private $data = [];
@@ -20,5 +20,25 @@ class PersistableEntity {
 		$table = preg_replace("/([a-z0-9])([A-Z0-9])/", '$1_$2', $table);
 		$table = strtolower($table);
 		return $table;
+	}
+
+	public function insert(){
+		Database::insert($this);
+	}
+	
+	public function update(){
+		Database::update($this);
+	}
+	
+	public function delete(){
+		Database::update($this);
+	}
+	
+	public function findById(int $id){
+		Database::findById(get_called_class(), $id);
+	}
+	
+	public function findAll(){
+		Database::findAll(get_called_class());
 	}
 }

@@ -7,7 +7,7 @@ class Database {
 
 	public static $pdo = null;
 
-	public static function getAll(string $entityClass){
+	public static function findAll(string $entityClass){
 		self::assertInitialized();
 
 		$table = $entityClass::getTable();
@@ -19,7 +19,7 @@ class Database {
 		return $stmt->fetchAll();
 	}
 
-	public static function getById(string $entityClass, int $id){
+	public static function findById(string $entityClass, int $id){
 		self::assertInitialized();
 
 		$table = $entityClass::getTable();
@@ -48,7 +48,7 @@ class Database {
 			throw new Exception("Entity already has an ID");
 		}
 
-		$columns = $entity->getColumns();
+		$columns = array_keys($entity->getFields());
 		$columns = array_filter($columns, function($column){
 			return $column != "id";
 		});
@@ -85,7 +85,7 @@ class Database {
 			throw new Exception("Need an ID to update the entity");
 		}
 
-		$columns = $entity->getColumns();
+		$columns = array_keys($entity->getFields());
 
 		$columnAssignmentArray = [];
 		foreach($columns as $column){
@@ -122,14 +122,7 @@ class Database {
 		return $stmt->execute([":id" => $entity->id]);
 	}
 
-	private function implyTable(string $entityClass){
-		$table = array_pop(explode("\\", $entityClass));
-		$table = preg_replace("/([a-z0-9])([A-Z])/", '$1_$2', $table);
-		$table = strtolower($table);
-		return $table;
-	}
-
-	private function assertInitialized(){
+	public function assertInitialized(){
 		if(self::$pdo === null){
 			$dbFile = "{$_SERVER["DOCUMENT_ROOT"]}/../default.sqlite3";
 			error_log("Database defaulting to sqlite at {$dbFile}");
