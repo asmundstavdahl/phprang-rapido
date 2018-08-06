@@ -1,6 +1,6 @@
 <?php
 
-use \Rapd\Router\Route;
+use \Rapd\Router;
 use \Rapd\View;
 
 function route(string $name, array $data = []){
