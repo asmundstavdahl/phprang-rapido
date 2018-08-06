@@ -26,10 +26,10 @@ class Router {
 		return null;
 	}
 
-	public static function routeTo(string $name, array $data = []){
+	public static function makeUrlTo(string $name, array $data = []){
 		$route = self::findRouteByName($name);
 		if($route){
-			return $route->makeURL($data);
+			return $route->makeUrl($data);
 		} else {
 			error_log("Route '{$name}' is not registered. Got a ".gettype($route)." from the Router.");
 			error_log("Registered routes are:");
@@ -81,7 +81,7 @@ class Router {
 	}
 
 	public static function redirectTo(string $name, array $data = []){
-		header("Location: ".self::routeTo($name, $data));
+		header("Location: ".self::makeUrlTo($name, $data));
 		exit;
 	}
 

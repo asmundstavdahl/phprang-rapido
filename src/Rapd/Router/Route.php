@@ -47,15 +47,11 @@ class Route {
 		}
 	}
 
-	public function makeURL(array $data){
+	public function makeUrl(array $data){
 		$path = $this->pattern;
 		foreach($data as $key => $value){
 			$path = preg_replace("/\([^)]*\)/", $value, $path, 1);
 		}
 		return Router::getApplicationBasePath().str_replace("//", "/", "{$this->baseURL}{$path}");
-	}
-
-	public static function to(string $name, array $data = []){
-		return \Rapd\Router::routeTo($name, $data);
 	}
 }
