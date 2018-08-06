@@ -5,8 +5,6 @@ namespace Rapd;
 class PersistableEntity extends BaseEntity {
 	use Prototype;
 
-	private $data = [];
-
 	/**
 	 * If not overridden this method will imply a table name.
 	 * Examples (entity class => table name):
