@@ -1,10 +1,4 @@
-{
-  "os": "linux",
-  "language": "php",
-  "php": 7.2,
-  "script": [
-    "php run-tests.php"
-  ],
-  "install": [
-  ]
-}
+language: php
+php: 7.2
+os: linux
+script: php run-tests.php
