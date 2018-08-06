@@ -53,13 +53,14 @@ foreach($itIt as $node){
 			}
 		}
 
-		echo "{$name} {\n";
+		echo " · {$name}…\n";
 		try {
 			include $node;
+			echo "\t→ OK?\n";
 		} catch(Exception $e){
 			echo "\t- {$e}\n";
-		} finally {
-			echo "} # {$name}\n";
 		}
 	}
 }
+
+echo "Finish!\n";
