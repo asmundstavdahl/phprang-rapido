@@ -23,7 +23,9 @@ class Route {
 
 	public function match(){
 		if($_SERVER["REQUEST_METHOD"] == $this->method){
-			$uri = str_replace(Router::getApplicationBasePath(), "", $_SERVER["REQUEST_URI"]);
+			# It's important to keep the first slash here
+			$uri = str_replace(Router::getApplicationBasePath(), "", "/".$_SERVER["REQUEST_URI"]);
+
 			$regex = "`^{$this->pattern}$`";
 			$matches = [];
 			if(preg_match($regex, $uri, $matches)){
