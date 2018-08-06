@@ -146,7 +146,7 @@ class Database {
 		return $stmt->execute([":id" => $entity->id]);
 	}
 
-	public function assertInitialized(){
+	public static function assertInitialized(){
 		if(self::$pdo === null){
 			$dbFile = "{$_SERVER["DOCUMENT_ROOT"]}/../default.sqlite3";
 			error_log("Database defaulting to sqlite at {$dbFile}");
