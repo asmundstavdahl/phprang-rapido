@@ -41,4 +41,12 @@ class PersistableEntity extends BaseEntity {
 	public static function findAll(){
 		return Database::findAll(get_called_class());
 	}
+
+	public static function findFirstWhere(string $condition, array $binds = []){
+		return Database::findFirstWhere(get_called_class(), $condition, $binds);
+	}
+
+	public static function findAllWhere(string $condition, array $binds = []){
+		return Database::findAllWhere(get_called_class(), $condition, $binds);
+	}
 }

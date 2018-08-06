@@ -52,6 +52,37 @@ class Database {
 		return $entity;
 	}
 
+	public static function findFirstWhere(string $entityClass, string $condition, array $binds = []) {
+		$entities = self::findAllWhere($entityClass, $condition, $binds);
+		if(count($entities) > 0){
+			return $entities[0];
+		} else {
+			return null;
+		}
+	}
+
+	public static function findAllWhere(string $entityClass, string $condition, array $binds = []) : array {
+		self::assertInitialized();
+
+		$table = $entityClass::getTable();
+
+		$sql = "SELECT * FROM `{$table}` WHERE {$condition}";
+		$stmt = self::$pdo->prepare($sql);
+		$stmt->execute($binds);
+
+		$rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		$entities = [];
+		foreach($rows as $values){
+			$entity = new $entityClass();
+			foreach($values as $field => $value){
+				$entity->{$field} = $value;
+			}
+			$entities[] = $entity;
+		}
+
+		return $entities;
+	}
+
 	public static function save(object $entity){
 		if($entity->id){
 			return self::update($entity);
