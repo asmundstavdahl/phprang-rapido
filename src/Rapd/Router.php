@@ -15,7 +15,10 @@ class Router {
 		self::$applicationBasePath = $applicationBasePath;
 	}
 	public static function getApplicationBasePath() : string {
-		return self::$applicationBasePath;
+		$path = self::$applicationBasePath;
+		$path = str_replace("//", "/", "/{$path}");
+		$path = rtrim($path, "/");
+		return $path;
 	}
 
 	public static function findRouteByName(string $name) {
@@ -30,7 +33,7 @@ class Router {
 	public static function makeUrlTo(string $name, array $data = []){
 		$route = self::findRouteByName($name);
 		if($route){
-			return $route->makeUrl($data);
+			return self::getApplicationBasePath().$route->makeUrl($data);
 		} else {
 			error_log("Route '{$name}' is not registered. Got a ".gettype($route)." from the Router.");
 			error_log("Registered routes are:");
@@ -79,13 +82,22 @@ class Router {
 	public static function run($method = null, $uri = null){
 		$method = $method !== null ?$method :$_SERVER["REQUEST_METHOD"];
 		$uri = $uri !== null ?$uri :$_SERVER["REQUEST_URI"];
+		
+		$path = self::getPathFromUri($uri);
 
-		$matchingRoute = self::findMatchingRoute($method, $uri);
+		$matchingRoute = self::findMatchingRoute($method, $path);
 
 		if($matchingRoute){
 			return $matchingRoute->execute();
 		}
 		return false;
+	}
+
+	public static function getPathFromUri(string $uri) : string {
+		$base = self::getApplicationBasePath();
+		$path = preg_replace("`^{$base}/?`", "/", $uri);
+		$path = trim($path, "/");
+		return "/{$path}";
 	}
 
 	public static function findMatchingRoute(string $method, string $uri){

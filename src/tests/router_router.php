@@ -30,9 +30,17 @@ assert($output == "Article 987");
 
 # makeUrl and base application path
 Router::setApplicationBasePath("/app");
-assert("/42" == Router::makeUrlTo("show_article", [42]));
+assert("/app/42" == Router::makeUrlTo("show_article", [42]));
 Router::setApplicationBasePath("/app/");
-assert("/43" == Router::makeUrlTo("show_article", [43]));
+assert("/app/43" == Router::makeUrlTo("show_article", [43]));
+
+# run and base application path
+Router::setApplicationBasePath("/app/two");
+assert(false !== Router::run("GET", "/app/two/56"));
+assert("Article 56" == Router::run("GET", "/app/two/56"));
+Router::setApplicationBasePath("/app/two/");
+assert(false !== Router::run("GET", "/app/two/56"));
+assert("Article 56" == Router::run("GET", "/app/two/56"));
 
 Router::reset();
 Router::loadDirectory(__DIR__."/_testRoutes");
