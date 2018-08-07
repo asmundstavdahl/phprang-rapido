@@ -1,11 +1,28 @@
 <?php
 
 use \Rapd\Router;
+use \Rapd\Router\Route;
 use \Rapd\View;
 
-Router::get("home", "/", function(){
-	return View::render("home");
-});
-Router::get("hello_world", "/world", [\HelloController::class, "world"]);
-Router::get("just_hello", "/hello", [\HelloController::class, "justHello"]);
-Router::get("hello_something", "/(\w+)", [\HelloController::class, "something"]);
+Router::add(new Route(
+	"home",
+	"/",
+	function(){
+		return View::render("home");
+	}
+));
+Router::add(new Route(
+	"hello_world",
+	"/world",
+	[\HelloController::class,"world"]
+));
+Router::add(new Route(
+	"just_hello",
+	"/hello",
+	[\HelloController::class,"justHello"]
+));
+Router::add(new Route(
+	"hello_something",
+	"/(\w+)",
+	[\HelloController::class,"something"]
+));
