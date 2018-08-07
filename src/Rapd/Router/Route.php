@@ -7,51 +7,46 @@ use \Rapd\Router;
 class Route {
 	use \Rapd\Prototype;
 
-	public $name = "";
-	public $pattern = "#";
-	public $method = "GET";
+	public $name = "some_re";
+	public $pattern = "/some/([rR]eg[eE]xp?)";
 	public $callback = [Your::class, "yourMethodHere"];
 
-	# Will be populated by ->match()
-	public $patternMatches = [];
-
-	function __construct(string $name, string $pattern, string $method, $callback){
+	function __construct(string $name, string $pattern, $callback){
 		$this->name = $name;
 		$this->pattern = $pattern;
-		$this->method = $method;
 		$this->callback = $callback;
 	}
 
-	public function match(string $method, string $uri){
-		if($method == $this->method){
-			$regex = "`^{$this->pattern}$`";
-			$matches = [];
-			if(preg_match($regex, $uri, $matches)){
-				$this->patternMatches = $matches;
-				return true;
-			}
-		}
-		$this->patternMatches = [];
-		return false;
+	public function match(string $uri) : bool {
+		return count($this->matchPattern($uri)) > 0;
 	}
 
-	public function execute(){
-		if(count($this->patternMatches) > 0){
-			array_shift($this->patternMatches);
+	public function execute(string $uri){
+		if($this->match($uri)){
+			$parameters = $this->matchPattern($uri);
+			# Remove the whole-pattern-match
+			array_shift($parameters);
 			return call_user_func_array(
 				$this->callback,
-				$this->patternMatches
+				$parameters
 			);
 		} else {
-			throw new Exception("Match the route to a URI first");
+			throw new Exception("URI does not match route's pattern");
 		}
 	}
 
-	public function makeUrl(array $data){
+	public function makeUrl(array $data) : string {
 		$path = $this->pattern;
 		foreach($data as $key => $value){
 			$path = preg_replace("/\([^)]*\)/", $value, $path, 1);
 		}
 		return $path;
+	}
+
+	private function matchPattern(string $uri) : array {
+		$regex = "`^{$this->pattern}$`";
+		$matches = [];
+		preg_match($regex, $uri, $matches);
+		return $matches;
 	}
 }
