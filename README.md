@@ -6,7 +6,7 @@ Super KISS PHP web app library.
 mkdir myproject
 cd myproject
 echo "{}" >> composer.json
-composer require asmundstavdahl/rapd
+composer require asmundstavdahl/rapd:^0.5
 cp -r vendor/asmundstavdahl/rapd/skeleton/* ./
 php -S localhost:8080 --docroot=public/
 ```
