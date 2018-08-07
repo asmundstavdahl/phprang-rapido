@@ -25,7 +25,7 @@ class Router {
 
 	public static function makeUrlTo(string $name, array $data = []){
 		if(array_key_exists($name, self::$routes)){
-			return $route->makeUrl($data);
+			return self::$routes[$name]->makeUrl($data);
 		} else {
 			return "#no-such-route:{$name}";
 		}

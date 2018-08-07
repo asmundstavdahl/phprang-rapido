@@ -16,6 +16,7 @@ assert($homeRoute->name == "home");
 Router::add($homeRoute);
 assert(Router::getRouteByName("home")->name == "home");
 assert(Router::getRouteByName("home")->match("/"));
+assert(Router::makeUrlTo("home") == "/");
 
 $route = Router::match("/");
 assert(Route::class == get_class($route));
@@ -32,3 +33,4 @@ assert(false === Router::match("/user/me"));
 assert(false === Router::match("/user/"));
 assert("profile" == Router::match("/user/42")->name);
 assert("User 42" == Router::match("/user/42")->execute("/user/42"));
+assert(Router::makeUrlTo("profile", [1337]) == "/user/1337");
