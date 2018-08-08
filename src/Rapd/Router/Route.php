@@ -31,7 +31,7 @@ class Route {
 				$parameters
 			);
 		} else {
-			throw new Exception("URI does not match route's pattern");
+			throw new \Exception("URI does not match route's pattern");
 		}
 	}
 
