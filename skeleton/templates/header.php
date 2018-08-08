@@ -19,13 +19,19 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="Skeleton-2.0.4/css/normalize.css">
-  <link rel="stylesheet" href="Skeleton-2.0.4/css/skeleton.css">
+  <link rel="stylesheet" href="<?= $ASSET_BASE ?>/Skeleton-2.0.4/css/normalize.css">
+  <link rel="stylesheet" href="<?= $ASSET_BASE ?>/Skeleton-2.0.4/css/skeleton.css">
   <!-- Thank you, Dave Gamache, author of Skeleton. http://getskeleton.com/ -->
+
+  <!-- <link rel="stylesheet" href="<?= $ASSET_BASE ?>/css/app.css"> -->
+
+  <!-- JS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- <script src="<?= $ASSET_BASE ?>/js/app.js"></script> -->
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="<?= $ASSET_BASE ?>/images/favicon.png">
 
 </head>
 <body>
