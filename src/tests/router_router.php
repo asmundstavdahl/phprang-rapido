@@ -34,3 +34,18 @@ assert(false === Router::match("/user/"));
 assert("profile" == Router::match("/user/42")->name);
 assert("User 42" == Router::match("/user/42")->execute("/user/42"));
 assert(Router::makeUrlTo("profile", [1337]) == "/user/1337");
+
+Router::add(new Route(
+	"article",
+	"/(\d+)",
+	function(int $id){
+		return "Article {$id}";
+	}
+));
+Router::setBasePath("/article");
+assert(false === Router::match("/article/me"));
+assert(false === Router::match("/me"));
+assert("article" == Router::match("/42")->name);
+assert("Article 42" == Router::match("/42")->execute("/42"));
+assert(Router::makeUrlTo("home", []) == "/article/");
+assert(Router::makeUrlTo("article", [1337]) == "/article/1337");
