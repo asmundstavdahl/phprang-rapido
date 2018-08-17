@@ -18,6 +18,11 @@ Environment::set("AUTHOR", "Åsmund Stavdahl");
 Environment::set("DESCRIPTION", "Default description of the rapd/skeleton");
 
 
+use \Rapd\Router;
+
+Router::setBasePath(Environment::get("ASSET_BASE"));
+
+
 use \Rapd\View;
 
 # Configure a function to be used by View::render()
