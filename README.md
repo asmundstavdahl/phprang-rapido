@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/asmundstavdahl/rapd.svg?branch=master)](https://travis-ci.org/asmundstavdahl/rapd)
+
+
 # Rapd
 Super KISS PHP web app library.
 
