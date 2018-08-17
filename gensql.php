@@ -33,5 +33,5 @@ CREATE TABLE IF NOT EXISTS <?= $className::getTable() ?> (
 
 <?php $prefix = ", "; ?>
 <?php endforeach; ?>
-)
+);
 <?php endforeach; ?>
