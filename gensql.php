@@ -25,7 +25,11 @@ foreach($files as $file):
 
 CREATE TABLE IF NOT EXISTS <?= $className::getTable() ?> (
 <?php foreach($className::$fields as $field => $type): ?>
-	<?= $prefix. $field ?> <?= $types[$type] ?>
+	<?= $prefix. $field ?> <?=
+	$field == "id"
+		?"INTEGER PRIMARY KEY"
+		:$types[$type]
+	?>
 
 <?php $prefix = ", "; ?>
 <?php endforeach; ?>
