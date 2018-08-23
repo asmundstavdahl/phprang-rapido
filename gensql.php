@@ -16,6 +16,9 @@ $types = [
 	integer::class => "INTEGER NOT NULL DEFAULT 0",
 	string::class => "TEXT NOT NULL DEFAULT ''",
 	float::class => "REAL NOT NULL DEFAULT 0.0",
+
+	"id" => "INTEGER PRIMARY KEY",
+	"timestamp" => "DATETIME DEFAULT CURRENT_TIMESTAMP",
 ];
 
 foreach($files as $file):
@@ -26,8 +29,8 @@ foreach($files as $file):
 CREATE TABLE IF NOT EXISTS <?= $className::getTable() ?> (
 <?php foreach($className::$fields as $field => $type): ?>
 	<?= $prefix. $field ?> <?=
-	$field == "id"
-		?"INTEGER PRIMARY KEY"
+	array_key_exists($field, $types)
+		?$types[$field]
 		:$types[$type]
 	?>
 
