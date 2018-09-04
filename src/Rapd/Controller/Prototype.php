@@ -10,7 +10,7 @@ trait Prototype {
 
 	public static function __callStatic($method, $args){
 		$argString = self::describeArray($args);
-		$message = "TODO: implement ".self::class."::{$method}({$argString})";
+		$message = "TODO: implement ".get_called_class()."::{$method}({$argString})";
 		return $message;
 	}
 }
